@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>隐私政策 - 机型识别(Model Check)</title>
+    <title>隐私政策 / Privacy Policy - 探机 iSpector</title>
     <style>
         * {
             margin: 0;
@@ -114,31 +114,48 @@
         <div class="card">
             <h1>隐私政策</h1>
             <div class="last-updated">
-                最后更新日期：2026年5月10日
+                最后更新日期：2026年10月25日
             </div>
 
-            <p>欢迎使用<strong>机型识别</strong>（以下简称「本应用」或「我们」）。本应用由开发者 <strong>Yoyo</strong>和<strong>Crisp</strong>（联系方式：crispnn@qq.com）提供。我们深知隐私对您的重要性，并承诺保护所有用户的隐私。</p>
+            <p>本政策适用于<strong>探机（iSpector，原名机型识别 / Model Check）2.0 更新版</strong>，包括移除磁盘空间访问后的版本。本应用由开发者 <strong>Yoyo</strong> 和 <strong>Crisp</strong> 提供，联系方式：<a href="mailto:crispnn@qq.com">crispnn@qq.com</a>。</p>
 
-            <h2>1. 信息收集</h2>
-            <p><strong>本应用不会以任何方式收集、存储、上传或共享您的个人信息。</strong> 本应用不要求您创建帐户、不收集设备标识符、不访问相册、相机、通讯录、位置等任何敏感权限或数据。</p>
+            <h2>1. 概述</h2>
+            <p>本应用无需注册开发者帐户。机型外观推理、应用内搜索及硬件检测主要在设备上完成。我们未集成广告、行为统计或第三方崩溃分析 SDK，也不使用广告标识符或进行跨应用广告跟踪。本应用不访问通讯录或定位信息。</p>
+            <p><strong>可选的自定义 AI API 会将对话及您选择提交的设备报告发送给配置的外部服务。</strong> 本应用没有用于接收这些对话或报告的开发者自有服务器；这不代表外部服务不会接收或保留数据。</p>
 
-            <h2>2. 数据使用</h2>
-            <p>由于我们不收集任何用户数据，因此不存在数据用于分析、广告投放、用户画像或任何商业目的的情况。</p>
+            <h2>2. 本地数据与系统权限</h2>
+            <ul>
+                <li><strong>历史与设置：</strong>机型识别历史、最近的检测报告（包括您填写的电池信息、检测结论及相关证据）、语言、检测偏好和 AI 配置保存在应用本地。检测证据可能包含导入音频的文件名、音频输出端口名称或系统错误信息。</li>
+                <li><strong>相机：</strong>仅在您发起拍照或录像检测时请求权限。拍摄内容不由本应用上传或写入相册；确认后释放照片，并尝试删除临时视频。</li>
+                <li><strong>麦克风与音频文件：</strong>用于录音回放和录像声音检测。测试录音临时保存在设备上，离开检测时尝试删除。您通过系统文件选择器选取的音频仅用于本地播放检测，不由本应用上传。</li>
+                <li><strong>照片添加权限：</strong>截图分享流程会请求仅添加照片的权限，以便保存截图；本应用不读取或浏览现有照片图库。</li>
+                <li><strong>Face ID / Touch ID：</strong>使用系统验证，读取能力类型及验证结果。本应用不会收到人脸或指纹模板。</li>
+                <li><strong>运动与蓝牙：</strong>读取陀螺仪旋转，以及蓝牙权限和开关状态。蓝牙检测不扫描附近设备。</li>
+                <li><strong>设备状态：</strong>按功能需要读取设备型号代码、系统版本、电量、温度状态、低电量模式、处理器、内存和屏幕信息，以及当前会话的触控测试进度。型号代码表示设备型号，不是唯一设备标识。本应用不读取设备存储容量或剩余空间，也不读取序列号或广告标识符。</li>
+            </ul>
+            <p>您可以拒绝可选权限，或在系统设置中撤销权限；相应检测或保存功能可能不可用，但其他不依赖该权限的功能仍可使用。</p>
 
-            <h2>3. 第三方服务</h2>
-            <p>本应用<strong>未集成任何第三方 SDK</strong>（包括但不限于统计、广告、推送、支付、崩溃分析等）。所有功能均在本地设备运行，无任何网络数据上传行为。</p>
+            <h2>3. AI 对话与设备分析</h2>
+            <p><strong>Apple 智能模式：</strong>使用 Foundation Models 提供的设备端模型处理对话和设备报告，不通过本应用的自定义 AI API 上传。是否可用取决于受支持的设备、系统版本及 Apple 智能配置。</p>
+            <p><strong>自定义 AI API 模式：</strong>由您配置 HTTPS 地址、模型和 API Key。默认地址指向 OpenAI，但您可以更换兼容服务；实际接收方取决于保存的地址。发送前，应用会显示外部服务主机名并请求确认；设备分析会再次请求确认。同一已确认地址的后续普通对话可能沿用当前聊天页面中的授权。</p>
+            <p>请求包含模型名称、AI 指令及受长度限制的最近对话（最多 12 条消息）。如果对话中已有设备报告，该报告也可能随后续消息再次发送。点按“数据分析”时，报告包含当前运行设备的型号代码、设备类别、系统和应用版本、处理器数量、物理内存、低电量模式、温度状态、电量及充电状态、屏幕规格和亮度，以及当前会话的触控测试摘要。报告不包含存储容量或剩余空间、设备名称、序列号、机型猜测历史、拍摄内容或录音。</p>
+            <p>您主动输入的个人信息仍可能随聊天发送。请勿输入密码、私密照片内容或其他不必要的敏感信息。外部服务还可能收到 IP 地址、请求时间和认证相关信息，并可能将请求关联到您的服务帐户。API Key 保存在此设备的系统钥匙串中，不写入应用的普通偏好设置。</p>
+            <p><strong>外部服务的数据保留、处理地区、是否用于模型训练及删除方式取决于该服务的条款和您的帐户设置。本应用不强制零保留，也不能保证请求匿名或不用于训练。</strong> 请在启用前查阅所选服务的政策；OpenAI 用户可参考其<a href="https://openai.com/policies/privacy-policy/">隐私政策</a>和<a href="https://platform.openai.com/docs/guides/your-data">API 数据处理说明</a>。这些链接不替代对具体服务及帐户配置的核实。</p>
 
-            <h2>4. 数据安全</h2>
-            <p>本应用不收集数据，因此不存在数据泄露、丢失或滥用的风险。如果您担心设备本地数据的安全，请参考 Apple iOS 系统自带的文件加密与保护机制。</p>
+            <h2>4. 其他网络访问与主动分享</h2>
+            <p>您发起互联网连通性检测时，应用会请求 Apple 的测试网页（https://www.apple.com/library/test/success.html），不会附加检测报告。Apple 及提供连接的网络服务会接收正常通信所需的信息，例如来源 IP 地址。</p>
+            <p>您可通过系统分享面板主动导出识别结果截图或检测报告。接收内容由您选择的应用、服务或人员处理，适用其隐私规则；本应用不会自动向开发者上传这些分享内容。</p>
 
-            <h2>5. 儿童隐私</h2>
-            <p>本应用不会有意收集任何年龄用户的个人信息。由于不收集任何数据，儿童使用本应用同样安全。</p>
+            <h2>5. 数据保留、删除与您的选择</h2>
+            <p>识别历史和最近检测结果等本地数据会保留至被替换、通过可用功能删除或移除应用数据；系统备份可能包含应用本地数据。聊天记录由聊天页面在内存中维护，不由本应用写入持久聊天数据库，但不保证切换标签页就会清空。临时文件清理可能因应用异常退出而未完成。</p>
+            <p>要停止未来向外部 AI 发送数据，请停止发送消息，或在 AI 设置中切换回 Apple 智能；这不会删除已经发送的内容。您可以在服务商处撤销或轮换 API Key。移除应用不保证删除系统钥匙串中的 Key，服务商撤销才会使其失效。删除应用或本地记录也不会删除外部服务保留的副本；请向对应服务商请求删除。</p>
+            <p>您可联系我们咨询本地数据处理及适用的隐私权利。若您通过邮件联系开发者，邮件地址、内容及附件会由开发者和邮件服务处理，用于回复和处理您的请求；请勿发送不必要的敏感数据，您可以请求删除相关往来，但可能受适用法律要求限制。</p>
 
-            <h2>6. 您的权利</h2>
-            <p>根据适用的隐私法律（如 GDPR、CCPA 等），您享有知情权、访问权、删除权等。因为本应用不收集任何个人信息，这些权利在事实上已得到最大程度的尊重。</p>
+            <h2>6. 安全与儿童隐私</h2>
+            <p>外部 AI 接口仅接受 HTTPS 地址，API Key 使用系统钥匙串存储。但任何存储或网络传输都无法保证绝对安全。本应用不是专门面向儿童的服务；我们不会有意要求儿童提供个人信息。监护人应指导儿童不要向外部 AI 发送个人或敏感信息；如有疑虑，请联系我们及相关服务商。</p>
 
-            <h2>7. 隐私政策更新</h2>
-            <p>我们可能会不定期更新本隐私政策。更新后的版本将在此页面发布，并更新「最后更新日期」。建议您定期查阅。对于重大变更，我们可能会通过 App 内通知或邮件等方式告知您。</p>
+            <h2>7. 政策更新</h2>
+            <p>我们会在数据处理方式变化时更新本政策及日期。请在使用新功能或更换外部 AI 服务前阅读当前政策和相应服务条款。</p>
 
             <div class="contact">
                 <h3 style="margin-top:0;">联系我们</h3>
@@ -149,12 +166,49 @@
 
             <hr>
 
-            <!-- 英文版（Apple 有时要求中英文双语） -->
+            <section lang="en">
             <h2 style="margin-top: 16px;">Privacy Policy</h2>
-            <p style="font-size: 14px; color: #6c6c70;">Last updated: May 10, 2026</p>
-            <p><strong>Model Check</strong> (provided by developers <strong>Yoyo</strong> and <strong>Crisp</strong>, contact: crispnn@qq.com) does <strong>not collect, store, upload, or share any personal information</strong> from users.</p>
-            <p>No account creation is required. The app does not access photos, camera, contacts, location, or device identifiers. No third-party SDKs are integrated. All functionality runs locally on your device.</p>
-            <p>Since no data is collected, there is no risk of data breach or misuse. For any privacy concerns, please contact us at <strong>crispnn@qq.com</strong>. We will respond within 15 business days.</p>
+            <p style="font-size: 14px; color: #6c6c70;">Last updated: October 25, 2026</p>
+            <p>This policy covers the <strong>updated iSpector / 探机 2.0 (formerly Model Check / 机型识别)</strong>, including the removal of disk-space access. The app is provided by <strong>Yoyo</strong> and <strong>Crisp</strong>. Contact: <a href="mailto:crispnn@qq.com">crispnn@qq.com</a>.</p>
+
+            <h3>1. Overview</h3>
+            <p>No developer account registration is required. Appearance-based model identification, in-app search and hardware checks primarily run on your device. We do not integrate advertising, behavioral analytics or third-party crash-reporting SDKs, use advertising identifiers, or perform cross-app advertising tracking. The app does not access contacts or location.</p>
+            <p><strong>The optional Custom AI API sends conversations and device reports you choose to submit to the configured external service.</strong> We do not operate a developer-owned server to receive these conversations or reports. This does not mean an external service cannot receive or retain data.</p>
+
+            <h3>2. Local Data and System Permissions</h3>
+            <ul>
+                <li><strong>History and settings:</strong> identification history, the latest diagnostic report (including manually entered battery information, verdicts and evidence), language, test preferences and AI configuration are stored locally. Evidence may include an imported audio filename, audio output port names or system error messages.</li>
+                <li><strong>Camera:</strong> permission is requested for photo or video tests you start. The app does not upload captures or save them to Photos. After confirmation, photos are released and temporary videos are scheduled for deletion.</li>
+                <li><strong>Microphone and audio files:</strong> used for recording/playback and video sound tests. Test recordings are temporary local files that the app attempts to delete when leaving the test. Audio selected through the system file picker is used for local playback testing, not uploaded by the app.</li>
+                <li><strong>Add-only Photos access:</strong> the screenshot-sharing flow requests permission to add photos so screenshots can be saved. The app does not read or browse your existing photo library.</li>
+                <li><strong>Face ID / Touch ID:</strong> the app uses system authentication and receives capability information and authentication results, not face or fingerprint templates.</li>
+                <li><strong>Motion and Bluetooth:</strong> the app reads gyroscope rotation and Bluetooth permission/power state. The Bluetooth check does not scan nearby devices.</li>
+                <li><strong>Device status:</strong> features may read the model code, OS version, battery, thermal state, Low Power Mode, processor, memory and display information, and current-session touch-test progress. A model code identifies a model, not an individual device. The app does not read storage capacity or free space, serial numbers or advertising identifiers.</li>
+            </ul>
+            <p>You can decline optional permissions or revoke them in system Settings. Related checks or saving functions may be unavailable, while functions that do not depend on those permissions remain available.</p>
+
+            <h3>3. AI Chat and Device Analysis</h3>
+            <p><strong>Apple Intelligence mode:</strong> conversations and reports are processed using the on-device model provided by Foundation Models, not uploaded through the app's Custom AI API. Availability depends on supported hardware, OS version and Apple Intelligence configuration.</p>
+            <p><strong>Custom AI API mode:</strong> you configure an HTTPS endpoint, model and API key. The default endpoint points to OpenAI, but you may replace it with a compatible service; the saved endpoint determines the recipient. Before sending, the app displays the external host and asks for confirmation. Device analysis asks for confirmation again. Subsequent ordinary messages to the same approved endpoint may use the authorization retained by the current chat screen.</p>
+            <p>Requests include the model name, AI instructions and length-limited recent conversation (up to 12 messages). A device report already in the conversation may be sent again with later messages. When you choose Data Analysis, the report includes the running device's model code, family, OS and app versions, processor counts, physical memory, Low Power Mode, thermal state, battery level/charging state, display specifications and brightness, and current-session touch-test summary. It excludes storage capacity/free space, device name, serial number, model-guess history, camera captures and recordings.</p>
+            <p>Personal information you type may still be sent as chat content. Do not enter passwords, private photo content or unnecessary sensitive information. The external service may also receive your IP address, request timing and authentication-related information, and may associate requests with your service account. The API key is stored in this device's system Keychain, not in ordinary app preferences.</p>
+            <p><strong>External-service retention, processing locations, training use and deletion procedures depend on that service's terms and your account settings. The app does not enforce zero retention or guarantee anonymous processing or exclusion from training.</strong> Review your chosen provider's policies before enabling it. OpenAI users can consult its <a href="https://openai.com/policies/privacy-policy/">Privacy Policy</a> and <a href="https://platform.openai.com/docs/guides/your-data">API data-handling documentation</a>. These links do not replace verification of the specific service and account configuration.</p>
+
+            <h3>4. Other Network Access and Sharing</h3>
+            <p>When you start an internet connectivity check, the app requests Apple's test page (https://www.apple.com/library/test/success.html) without attaching your diagnostic report. Apple and network providers receive information needed for normal communication, such as your source IP address.</p>
+            <p>You may export identification screenshots or diagnostic reports through the system share sheet. Your chosen app, service or recipient handles that content under its own privacy practices. The app does not automatically upload shared content to the developers.</p>
+
+            <h3>5. Retention, Deletion and Your Choices</h3>
+            <p>Local history and recent diagnostic results remain until replaced, deleted through available controls or removed with app data. System backups may include local app data. The chat screen maintains conversations in memory rather than a persistent chat database; switching tabs does not necessarily clear them. Temporary-file cleanup may not complete if the app exits unexpectedly.</p>
+            <p>To stop future external AI requests, stop sending messages or switch to Apple Intelligence in AI Settings. This does not delete previously sent content. You can revoke or rotate the API key with the provider. Removing the app does not guarantee removal of Keychain entries; provider-side revocation invalidates the key. Deleting the app or local records does not delete copies retained by an external service. Request deletion from that provider.</p>
+            <p>Contact us about local data handling and applicable privacy rights. If you email the developers, your address, message and attachments are handled by the developers and email services to respond to your request. Avoid unnecessary sensitive information. You may request deletion of correspondence, subject to applicable legal requirements.</p>
+
+            <h3>6. Security and Children</h3>
+            <p>Custom AI endpoints must use HTTPS, and API keys are stored in the system Keychain. No storage or transmission method can be guaranteed completely secure. The app is not specifically directed to children, and we do not intentionally ask children to provide personal information. Guardians should guide children not to send personal or sensitive information to external AI. Contact us and the relevant provider with concerns.</p>
+
+            <h3>7. Policy Changes and Contact</h3>
+            <p>We will update this policy and its date when data practices change. Review the current policy and applicable service terms before using new features or changing AI providers. For questions, contact <a href="mailto:crispnn@qq.com">crispnn@qq.com</a>. We aim to respond within 15 business days.</p>
+            </section>
         </div>
     </div>
 </body>
